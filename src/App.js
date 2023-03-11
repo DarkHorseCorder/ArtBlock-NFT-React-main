@@ -34,13 +34,16 @@ function App() {
   const [frameheight, setFrameHeight] = useState(500)
   useEffect(()=>{
     (async() => {
+      console.log('>>>>>>>>>>>>>>', artblocks.projects);
       var temp =await artblocks.projects()
+      // console.log(temp)
       var list = [];
       await Promise.all(temp.map(async (value) => {
         const response = await artblocks.project_metadata(value.id)
+        // console.log(response)
         list.push(response)
       }) )
-      console.log(list)
+      // console.log(list)
       setProjects(list)
       setShowProjects(list)
     })();
