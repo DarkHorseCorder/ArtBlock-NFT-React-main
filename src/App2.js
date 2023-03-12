@@ -1,10 +1,9 @@
+import logo from './logo.svg';
 import './App.css';
 import React, {useEffect, useState} from 'react';
-import { IABCollection } from "./global.d.ts";
-import ArtBlocks from 'artblocks';
-import { getABCollections } from "./lib/artblocks";
+import ArtBlocks from 'artblocks'
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
+import Button from 'react-bootstrap/Button'
 
 function App() {
   let artblocks = new ArtBlocks("thegraph", "mainnet");
@@ -35,11 +34,8 @@ function App() {
   const [frameheight, setFrameHeight] = useState(500)
   useEffect(()=>{
     (async() => {
+      console.log('>>>>>>>>>>>>>>', artblocks.projects);
       var temp =await artblocks.projects()
-      console.log('>>>>>>>>>>>>>>', temp);
-
-      const data = await getABCollections();
-      console.log("-------", data.length, data);
       // console.log(temp)
       var list = [];
       await Promise.all(temp.map(async (value) => {
@@ -47,9 +43,9 @@ function App() {
         // console.log(response)
         list.push(response)
       }) )
-      console.log("!!!!!!!!!!!!",list)
-      setProjects(data)
-      setShowProjects(data)
+      // console.log(list)
+      setProjects(list)
+      setShowProjects(list)
     })();
   },[])
 
@@ -143,13 +139,13 @@ function App() {
               [].concat(showprojects)
               .sort((a, b) => a[sortType] > b[sortType] ? 1 : -1)
               .map((resItem, i) => 
-              <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.projectId)}}>{resItem.name}{resItem.projectId}</ListGroup.Item>
+              <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.id)}}>{resItem.name}</ListGroup.Item>
               )
               :
               [].concat(showprojects)
               .sort((a, b) => a[sortType] < b[sortType] ? 1 : -1)
               .map((resItem, i) => 
-              <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.projectId)}}>{resItem.name}{resItem.projectId}</ListGroup.Item>
+              <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.id)}}>{resItem.name}</ListGroup.Item>
               )
             )
             :
@@ -158,13 +154,13 @@ function App() {
                 [].concat(showprojects)
                 .sort((a, b) => a[sortType].toString().toLowerCase() > b[sortType].toString().toLowerCase() ? 1 : -1)
                 .map((resItem, i) => 
-                <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.projectId)}}>{resItem.name}{resItem.projectId}</ListGroup.Item>
+                <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.id)}}>{resItem.name}</ListGroup.Item>
                 )
                 :
                 [].concat(showprojects)
                 .sort((a, b) => a[sortType].toString().toLowerCase() < b[sortType].toString().toLowerCase() ? 1 : -1)
                 .map((resItem, i) => 
-                <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.projectId)}}>{resItem.name}{resItem.projectId}</ListGroup.Item>
+                <ListGroup.Item key={resItem.id} onClick={()=>{shownProjectdetail(resItem.id)}}>{resItem.name}</ListGroup.Item>
                 )
               )
             }

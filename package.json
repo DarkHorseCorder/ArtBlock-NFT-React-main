@@ -3,16 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@graphprotocol/client-cli": "^2.2.16",
+    "@graphql-mesh/utils": "^0.43.15",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
     "api": "^4.5.2",
     "artblocks": "^0.1.4",
     "bootstrap": "^5.2.0",
+    "connectkit": "^1.1.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
+    "typescript": "^4.9.5",
+    "wagmi": "^0.9.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
